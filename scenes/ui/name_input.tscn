@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://bahkhvcmmdu2o"]
+
+[ext_resource type="Script" uid="uid://bo23xf03lludm" path="res://scripts/ui/name_input.gd" id="1_a3bpc"]
+
+[node name="NameInput" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a3bpc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.11764706, 0.19607843, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_top = 59.0
+offset_right = 89.0
+offset_bottom = 82.0
+grow_horizontal = 2
+text = "¿CUÁL ES TU NOMBRE?"
+
+[node name="NameLineEdit" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 0
+offset_left = 384.0
+offset_top = 114.0
+offset_right = 784.0
+offset_bottom = 174.0
+placeholder_text = "Escribe tu nombre..."
+
+[node name="ConfirmButton" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 0
+offset_left = 509.0
+offset_top = 203.0
+offset_right = 675.0
+offset_bottom = 257.0
+text = "CONFIRMAR"
+
+[node name="CharacterPreview" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 26.0
+offset_right = 430.0
+offset_bottom = 66.0
+scale = Vector2(2, 2)

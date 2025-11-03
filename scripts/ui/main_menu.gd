@@ -105,7 +105,7 @@ func _on_new_game_pressed():
 	await tween.finished
 	
 	# Ir a selección de género
-	get_tree().change_scene_to_file("res://scenes/ui/gender_selection.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/Gender_selection.tscn")
 
 func _on_continue_pressed():
 	print("Continuar partida")
