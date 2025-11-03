@@ -104,8 +104,8 @@ func _on_new_game_pressed():
 	tween.tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
 	
-	# Ir a selección de género
-	get_tree().change_scene_to_file("res://scenes/ui/Gender_selection.tscn")
+	# Ir a selección de género (NOMBRE CORREGIDO)
+	get_tree().change_scene_to_file("res://scenes/ui/GenderSelection.tscn")
 
 func _on_continue_pressed():
 	print("Continuar partida")
