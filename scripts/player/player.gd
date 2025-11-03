@@ -8,11 +8,12 @@ const SPEED = 100.0
 
 func _ready():
 	print("Jugador listo")
-	# Por ahora usaremos el icono de Godot como placeholder
-	# Temporal: hacer el sprite más pequeño
-	sprite.scale = Vector2(0.5, 0.5)
+	print("Posición inicial: ", position)
+	# Hacer el sprite visible y más grande
+	sprite.scale = Vector2(0.8, 0.8)  # Un poco más grande
+	sprite.modulate = Color(1, 1, 1, 1)  # Asegurar que sea visible
 
-func _physics_process(_delta):  # Agregamos el guion bajo
+func _physics_process(_delta):
 	# Obtener la dirección de movimiento
 	var direction = Vector2.ZERO
 	
@@ -38,4 +39,4 @@ func _physics_process(_delta):  # Agregamos el guion bajo
 	
 	# Debug: imprimir la posición para verificar movimiento
 	if direction != Vector2.ZERO:
-		print("Moviendo a: ", position)
+		print("Posición actual: ", position)
