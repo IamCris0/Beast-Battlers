@@ -12,7 +12,7 @@ func _ready():
 	# Temporal: hacer el sprite más pequeño
 	sprite.scale = Vector2(0.5, 0.5)
 
-func _physics_process(delta):
+func _physics_process(_delta):  # Agregamos el guion bajo
 	# Obtener la dirección de movimiento
 	var direction = Vector2.ZERO
 	
@@ -35,3 +35,7 @@ func _physics_process(delta):
 	
 	# Mover el personaje
 	move_and_slide()
+	
+	# Debug: imprimir la posición para verificar movimiento
+	if direction != Vector2.ZERO:
+		print("Moviendo a: ", position)

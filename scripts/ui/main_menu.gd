@@ -18,8 +18,8 @@ func _ready():
 
 func _on_new_game_pressed():
 	print("Nueva partida iniciada")
-	# Cambiar a la escena del mundo
-	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+	# CAMBIADO: World.tscn con W mayúscula
+	get_tree().change_scene_to_file("res://scenes/world/World.tscn")
 
 func _on_continue_pressed():
 	print("Continuar partida")
