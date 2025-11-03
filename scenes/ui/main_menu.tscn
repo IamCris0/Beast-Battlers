@@ -25,17 +25,15 @@ expand_mode = 1
 
 [node name="TitleLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -119.0
-offset_right = 69.0
-offset_bottom = -96.0
+offset_left = -166.99997
+offset_top = 101.00001
+offset_right = 89.0
+offset_bottom = 146.0
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(1.3462687, 1.8786671)
 theme_override_font_sizes/font_size = 32
 text = "BEAST BATTLERS"
 
@@ -73,3 +71,16 @@ mix_target = 2
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+position = Vector2(576, 100)
+amount = 75
+lifetime = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(600, 400)
+gravity = Vector2(0, 20)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.3
+scale_amount_max = 1.8
+color = Color(1, 0.9906667, 0.44, 1)
