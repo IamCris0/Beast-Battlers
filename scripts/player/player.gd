@@ -34,18 +34,18 @@ func _physics_process(_delta):
 	# Normalizar para que el movimiento diagonal no sea más rápido
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
+	
+	# Actualizar posición en GameData
 	GameData.player_position = position
+	
 	# Aplicar la velocidad
 	velocity = direction * SPEED
 	
 	# Mover el personaje
 	move_and_slide()
-	
-	func _input(event):
-	if event.is_action_pressed("ui_accept"):  # Tecla Enter/Space
+
+func _input(event):
+	# Guardar con la tecla Enter/Space
+	if event.is_action_pressed("ui_accept"):
 		GameData.save_game()
 		print("¡Juego guardado!")
-		
-	# Debug: imprimir la posición para verificar movimiento
-	if direction != Vector2.ZERO:
-		print("Posición actual: ", position)

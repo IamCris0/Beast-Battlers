@@ -13,15 +13,17 @@ extends Control
 @onready var click_sound = $ClickSound
 
 # Referencia al fondo
-@onready var background = $Background
+@onready var background = $BackGround
 
 func _ready():
 	# Configurar fuente para todos los elementos
 	setup_fonts()
 	
+	# Habilitar continuar si existe guardado
+	continue_button.disabled = not GameData.has_save()
+	
 	# Conectar las señales de los botones
 	new_game_button.pressed.connect(_on_new_game_pressed)
-	continue_button.disabled = not GameData.has_save()
 	continue_button.pressed.connect(_on_continue_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
 	
@@ -29,9 +31,6 @@ func _ready():
 	new_game_button.mouse_entered.connect(_on_button_hover)
 	continue_button.mouse_entered.connect(_on_button_hover)
 	exit_button.mouse_entered.connect(_on_button_hover)
-	
-	# Desactivar continuar si no hay partida guardada
-	continue_button.disabled = true
 	
 	# Iniciar animaciones
 	animate_title()
@@ -94,37 +93,6 @@ func _on_button_hover():
 
 func _on_new_game_pressed():
 	print("Nueva partida iniciada")
-	# Reproducir sonido de clic
-	if click_sound.stream:
-		click_sound.play()
-	
-	# Animación de salida
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
-	await tween.finished
-	
-	# Cambiar a la escena del mundo
-	get_tree().change_scene_to_file("res://scenes/world/World.tscn")
-
-func _on_continue_pressed():
-	print("Continuar partida")
-	if click_sound.stream:
-		click_sound.play()
-	# Aquí cargaremos la partida guardada
-
-func _on_exit_pressed():
-	print("Saliendo del juego...")
-	if click_sound.stream:
-		click_sound.play()
-	
-	# Animación antes de salir
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.5)
-	await tween.finished
-	
-	get_tree().quit()
-	func _on_new_game_pressed():
-	print("Nueva partida iniciada")
 	if click_sound.stream:
 		click_sound.play()
 	
@@ -151,3 +119,15 @@ func _on_continue_pressed():
 		await tween.finished
 		
 		get_tree().change_scene_to_file("res://scenes/world/World.tscn")
+
+func _on_exit_pressed():
+	print("Saliendo del juego...")
+	if click_sound.stream:
+		click_sound.play()
+	
+	# Animación antes de salir
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	
+	get_tree().quit()
