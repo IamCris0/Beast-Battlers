@@ -8,10 +8,14 @@ const SPEED = 100.0
 
 func _ready():
 	print("Jugador listo")
-	print("Posición inicial: ", position)
-	# Hacer el sprite visible y más grande
-	sprite.scale = Vector2(0.8, 0.8)  # Un poco más grande
-	sprite.modulate = Color(1, 1, 1, 1)  # Asegurar que sea visible
+	print("Nombre: ", GameData.player_name)
+	print("Género: ", GameData.player_gender)
+	
+	# Cargar posición guardada si existe
+	position = GameData.player_position
+	
+	sprite.scale = Vector2(0.8, 0.8)
+	sprite.modulate = Color(1, 1, 1, 1)
 
 func _physics_process(_delta):
 	# Obtener la dirección de movimiento
@@ -30,13 +34,18 @@ func _physics_process(_delta):
 	# Normalizar para que el movimiento diagonal no sea más rápido
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
-	
+	GameData.player_position = position
 	# Aplicar la velocidad
 	velocity = direction * SPEED
 	
 	# Mover el personaje
 	move_and_slide()
 	
+	func _input(event):
+	if event.is_action_pressed("ui_accept"):  # Tecla Enter/Space
+		GameData.save_game()
+		print("¡Juego guardado!")
+		
 	# Debug: imprimir la posición para verificar movimiento
 	if direction != Vector2.ZERO:
 		print("Posición actual: ", position)

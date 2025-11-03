@@ -21,6 +21,7 @@ func _ready():
 	
 	# Conectar las señales de los botones
 	new_game_button.pressed.connect(_on_new_game_pressed)
+	continue_button.disabled = not GameData.has_save()
 	continue_button.pressed.connect(_on_continue_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
 	
@@ -122,3 +123,31 @@ func _on_exit_pressed():
 	await tween.finished
 	
 	get_tree().quit()
+	func _on_new_game_pressed():
+	print("Nueva partida iniciada")
+	if click_sound.stream:
+		click_sound.play()
+	
+	# Resetear datos
+	GameData.reset_data()
+	
+	# Animación de salida
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	
+	# Ir a selección de género
+	get_tree().change_scene_to_file("res://scenes/ui/gender_selection.tscn")
+
+func _on_continue_pressed():
+	print("Continuar partida")
+	if click_sound.stream:
+		click_sound.play()
+	
+	# Cargar datos
+	if GameData.load_game():
+		var tween = create_tween()
+		tween.tween_property(self, "modulate:a", 0.0, 0.5)
+		await tween.finished
+		
+		get_tree().change_scene_to_file("res://scenes/world/World.tscn")
