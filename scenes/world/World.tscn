@@ -21,6 +21,7 @@ texture = ExtResource("2_6eebf")
 shape = SubResource("RectangleShape2D_qjesc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+enabled = false
 zoom = Vector2(2, 2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
